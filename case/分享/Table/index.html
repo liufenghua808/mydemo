@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link type="text/css" rel="stylesheet" href="css/table.css" />
+		<script type="text/javascript" src="js/systable.js"></script>
+		<title></title>
+	</head>
+
+	<body class="index_style">
+		<div class="margin20">
+			<h3 class="color4">SYSTABLE version2.0 table表格插件，是本人独立开发的后台通用系统SYSUI的扩展js插件，纯js,不依赖jquery库。经测试，支持IE（部分支持）,360,火狐，谷歌，safari等主流浏览器,支持扩展。是一款不错的table表格插件。</h3>
+			<h4 class="color3">支持表格直接修改信息，暂支持文本修改，checkbox复选框操作</h4>
+			<h2 class="color3">详细演示地址请登录<a href="http://www.husysui.com/systable.html" target="_blank">http://www.husysui.com/systable.html</a>进行操作，以及使用说明</h2>
+		</div>
+		<div>
+			<a href="index.html" class="btn btn-green btnEvent" name="DeleteCheckbox">后台操作</a>
+			<a href="index1.html" class="btn btn-green btnEvent" name="DeleteCheckbox">前台显示操作</a>
+		</div>
+		<div class="mtb10 clearfix" id="btn-operation">
+			<a href="javascript:;" class="btn btn-green btnEvent" name="DeleteCheckbox">删除选中</a>
+			<a href="javascript:;" class="btn btn-blue btnEvent" name="RefreshEvent">刷新当前</a>
+			<a href="javascript:;" class="btn btn-blue btnEvent" name="ExcelEvent" data-name="注册用户信息表格数据.xls">导出Excel</a>
+			<span class="r-f search-style">
+				<input type="text" placeholder="输入关键字查询" value="" name="searchText"  class="input-text" /><a href="javascript:;" class="btn btn-blue btnEvent" name="searchEvent">搜索</a>
+			</span>
+		</div>
+		<table class="gallery table table_list table_striped table-bordered border " id="tableList" style="width: 100%;" cellpadding="0">
+			<thead>
+				<tr>
+					<th width="50px">
+						<label class="checkbox relative"><input type="checkbox" class="ace" name="checkbox"><span class="lbl"></span></label>
+					</th>
+					<th>用户名</th>
+					<th>性别</th>
+					<th>头像</th>
+					<th>电话</th>
+					<th>邮箱</th>
+					<th>地址</th>
+					<th>注册时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="relative">
+					<td data-value="id" data-format="checkbox" data-Array=""></td>
+					<td class="table-edit" data-value="name"></td>
+					<td class="table-edit" data-value="sex" data-name="checkbox" data-format="checkbox" data-Array="保密,男,女"></td>
+					<td data-value="Headimg" data-format="img" data-Array="images/"></td>
+					<td class="table-edit" data-value="mobilephone"></td>
+					<td class="table-edit" data-value="mailbox"></td>
+					<td class="table-edit" data-value="province"></td>
+					<td data-value="regtime" data-format="time"></td>
+					<td data-value="id" data-button="btn">
+						<button class="btn btn-danger padding5" name="deleteEvent">删除</button>
+						<button class="btn btn-blue padding5" name="modifyEvent">修改</button>
+						<button class="btn btn-blue padding5" name="detailedEvent">详细</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!--分页-->
+		<div class="Paging" id="pagination">
+		</div>
+	</body>
+
+</html>
+
+<script>
+	new SYSTableSorter({
+		TableName: 'tableList', //表格区域
+		btnArea: 'btn-operation', //按钮区域
+		paginName: 'pagination', //分页区域
+		curPage: 1, //默认页
+		mode: 'table', //模式
+		setItem: 'menu',
+		timeFormat: 'yyyy-MM-dd hh:mm:ss', //时间显示格式
+		Sequence: [,4,5 ],
+		Callback: function(obj, index, curPage, pageSize) {
+			index.ajaxGet("data.json", null, curPage, pageSize);
+		},
+		SearchEvent: function(index, value, curPage, pageSize) {
+			index.PromptBox("请登录www.husysui.com查看具体操作！", 2, false);
+		},
+		SaveEvent: function(layer, index, id, data, evnet) {
+			index.PromptBox("请登录www.husysui.com查看具体操作！", 2, false);
+		},
+		DeleteEvent: function(layer, index, id, curPage, pageSize) {
+			index.PromptBox("请登录www.husysui.com查看具体操作！", 2, false);
+		},
+		CheckboxDeleteEvent: function(index, id, curPage, pageSize) {
+			index.PromptBox("请登录www.husysui.com查看具体操作！", 2, false);
+		},
+		DetailedEvent: function(layer, index, id) {
+			index.PromptBox("抱歉该功能暂未开发！", 2, false);
+		}
+	});
+	/******************************/
+</script>
