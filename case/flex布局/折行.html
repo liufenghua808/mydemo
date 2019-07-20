@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            display: flex;
+            /* 反方向 */
+            flex-direction: row-reverse;
+            /* 默认不折行
+            flex-wrap: nowrap; */
+
+            /*横向折行
+            flex-wrap: wrap;*/
+
+            flex-flow: wrap;
+            /*主轴排列方式*/
+            justify-content:space-between;
+            width: 400px;
+            height: 400px;
+            background: red;
+            margin: 0 auto;
+
+        }
+
+        .item {
+            height: 50px;
+            width: 50px;
+            background: pink;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        
+    </div>
+</body>
+
+</html>
